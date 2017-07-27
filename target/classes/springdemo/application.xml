@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+		
+	<aop:aspectj-autoproxy/>
+		
+	<!-- <context:annotation-config/> -->
+	<context:component-scan base-package="com.denofprogramming.service"/>
+	
+	<!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view"/>
+		<property name="suffix" value=".jsp"></property>
+	</bean> -->
+	
+	<!-- this is causing some problem 
+	soln care what you returned if you returned null its GG -->
+	
+	<!-- <bean class="com.denofprogramming.process.MessageCheckerPostProcessor" p:order="1"/>
+	<bean class="com.denofprogramming.process.MessageCheckerPostProcessor2" p:order="0"/>
+	<bean class="com.denofprogramming.process.PrinterCheckerPostProcessor"/> -->
+																											 <!-- no object instance -->
+	<!-- <bean id ="message" class="com.denofprogramming.service.BasicMessageOfTheDayImpl" p:message="Message from me" abstract="true"
+		init-method="init" destroy-method="destroy" />
+		
+	<bean id="message2" parent="message" p:message = "Something new" />
+	
+	can remove class part as it can also be like different class with same properties
+	<bean id="abstractMessage" abstract="true"/>
+	<bean id="tsm" class="com.denofprogramming.service.TimeStampedAbstactMessage" parent="abstractMessage" p:message=" Time Stamped"/>
+	<bean id="service" class="com.denofprogramming.service.NoTimeStampedAbstactMessage" parent="abstractMessage" p:message="Non Time Stamped"/> -->
+	
+	<!-- bean wiring -->
+	
+	<!-- <bean id="printer" class="com.denofprogramming.service.MessagePrinter" p:name2=" >>> " c:_1="Text" c:name2=">>" c:service-ref="dmessage" /> --> 
+																									<!-- autowire="constructor" -->
+	
+<!-- 		<constructor-arg>
+			<bean class="com.denofprogramming.service.NoTimeStampedAbstactMessage" p:message="This is inner part" />
+		</constructor-arg>																		
+	</bean> -->
+	
+		<!-- <property name="service" ref="dMessage"/>
+		<constructor-arg index="2" value="new value "/>
+		<constructor-arg index="1" value="second "/>
+		<constructor-arg index="0" ref="message"/> -->
+	
+	<!-- cant have multiple bean with same type -->
+	<!-- <bean id="printer" class="com.denofprogramming.service.MessagePrinter" p:name2=" >>> " p:name="Text" autowire="byType" /> -->
+	<!-- annotation autowire & value -->
+	<!-- <bean id="printer" class="com.denofprogramming.service.MessagePrinter" /> -->
+	
+	<!-- <bean id="dmessage" class="com.denofprogramming.service.DynamicMessageOfTheDayImpl" /> -->
+<!-- 		<property name="messages">
+			<array>
+				<ref bean="1"/>
+				<ref bean="2"/>
+				<ref bean="3"/>
+				<ref bean="4"/>
+				<ref bean="5"/>
+				<ref bean="6"/>
+				<ref bean="7"/>
+			</array>
+		</property>
+		<property name="messageList">
+			<list>
+				<ref bean="1"/>
+				<ref bean="2"/>
+				<ref bean="3"/>
+				<ref bean="4"/>
+				<ref bean="5"/>
+				<ref bean="6"/>
+				<ref bean="7"/>
+			</list>
+		</property>
+		<property name="messageMap">
+			<map>
+				<entry key="1"><ref bean="1"/></entry>
+				<entry key="2"><ref bean="2"/></entry>
+				<entry key="3" value-ref="3" />
+				<entry key="4"><ref bean="4"/></entry>
+				<entry key="5"><ref bean="5"/></entry>
+				<entry key="6"><ref bean="6"/></entry>
+				<entry key="7" value-ref="7"/>
+			</map>
+		</property>
+		<constructor-arg>
+			<array>
+				<ref bean="1"/>
+				<ref bean="2"/>
+				<ref bean="3"/>
+				<ref bean="4"/>
+				<ref bean="5"/>
+				<ref bean="6"/>
+				<ref bean="7"/>
+			</array>
+		</constructor-arg>
+	</bean> -->
+	
+	<!-- Message value -->
+	<bean id="1" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Sunday"/>
+	</bean>
+	<bean id="2" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Monday"/>
+	</bean>
+	<bean id="3" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Tuesday"/>
+	</bean>
+	<bean id="4" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Wednesday"/>
+	</bean>
+	<bean id="5" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Thrusday"/>
+	</bean>
+	<bean id="6" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Friday"/>
+	</bean>
+	<bean id="7" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Saturday"/>
+	</bean>
+</beans>
